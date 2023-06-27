@@ -14,11 +14,14 @@ set("n", ",7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
 set("n", ",8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
 set("n", ",9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
 set("n", ",0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
+set("n", ",l", "<cmd>e#<cr>", { desc = "Last Buffer" })
 
 set("n", "<leader><tab><tab>", "<cmd>tablast<cr>", { desc = "Last tab" })
 set("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New tab" })
 set("n", "<leader>wo", "<cmd>only<cr>", { desc = "Focus window" })
 set("n", "<leader>wq", "<cmd>q<cr>", { desc = "Quit window" })
+
+set("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New buffer" })
 
 local picker = require("window-picker")
 set("n", "\\", function()
@@ -33,3 +36,7 @@ wk.register({ ["<leader>cj"] = { name = "Code Split/Join" } })
 
 set("n", "[<space>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Empty line above" })
 set("n", "]<space>", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = "Empty line below" })
+
+set("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
+set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
+set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find Git Files (root dir)" })
