@@ -21,7 +21,22 @@ return {
       },
       filesystem = {
         use_libuv_file_watcher = true,
+        follow_current_file = { enabled = true },
+
+        filtered_items = {
+          visible = true,
+          show_hidden_count = false,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = {
+            ".git",
+            ".DS_Store",
+            "thumbs.db",
+          },
+          never_show = {},
+        },
       },
+      sources = { "filesystem", "buffers", "git_status", "document_symbols" },
     },
   },
   {
