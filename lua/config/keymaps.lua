@@ -35,8 +35,8 @@ set_keymap("c", "<C-e>", "<C-r>=expand('%:p:h')<CR>/", { desc = "Fill current di
 set_keymap("n", "<leader>:", ":%s/:(w+)(s*=>s*)/\1: /gc<CR>", { desc = "Replace old Ruby hash syntax to new one" })
 
 -- Disable arrow keys in normal mode
-multiple_set_keymap("n,i", "<Left>", "<Nop>", { noremap = true, silent = true })
-multiple_set_keymap("n,i", "<Right>", "<Nop>", { noremap = true, silent = true })
+-- multiple_set_keymap("n,i", "<Left>", "<Nop>", { noremap = true, silent = true })
+-- multiple_set_keymap("n,i", "<Right>", "<Nop>", { noremap = true, silent = true })
 
 -- Disable arrow keys in insert mode
 set_keymap("i", "<Up>", "<Nop>", { noremap = true, silent = true })
@@ -64,33 +64,28 @@ multiple_set_keymap("n,i", "<C-p>", "<Cmd>Telescope find_files<CR>", {
   desc = "Find files", -- Description for the key mapping
 })
 
-set_keymap("n", ",1", "<cmd>BufferLineGoToBuffer 1<cr>", { desc = "Buffer 1" })
-set_keymap("n", ",2", "<cmd>BufferLineGoToBuffer 2<cr>", { desc = "Buffer 2" })
-set_keymap("n", ",3", "<cmd>BufferLineGoToBuffer 3<cr>", { desc = "Buffer 3" })
-set_keymap("n", ",4", "<cmd>BufferLineGoToBuffer 4<cr>", { desc = "Buffer 4" })
-set_keymap("n", ",5", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Buffer 5" })
-set_keymap("n", ",6", "<cmd>BufferLineGoToBuffer 6<cr>", { desc = "Buffer 6" })
-set_keymap("n", ",7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
-set_keymap("n", ",8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
-set_keymap("n", ",9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
-set_keymap("n", ",0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
-set_keymap("n", ",l", "<cmd>e#<cr>", { desc = "Last Buffer" })
+set_keymap("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>", { desc = "Buffer 1" })
+set_keymap("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<cr>", { desc = "Buffer 2" })
+set_keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<cr>", { desc = "Buffer 3" })
+set_keymap("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>", { desc = "Buffer 4" })
+set_keymap("n", "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Buffer 5" })
+set_keymap("n", "<leader>6", "<cmd>BufferLineGoToBuffer 6<cr>", { desc = "Buffer 6" })
+set_keymap("n", "<leader>7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
+set_keymap("n", "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
+set_keymap("n", "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
+set_keymap("n", "<leader>0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
+-- set_keymap("n", "<leader>l", "<cmd>e#<cr>", { desc = "Last Buffer" })
 
 set_keymap("n", "<leader>wo", "<cmd>only<cr>", { desc = "Focus window" })
 set_keymap("n", "<leader>wq", "<cmd>q<cr>", { desc = "Quit window" })
 
 set_keymap("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New buffer" })
 
-local picker = require("window-picker")
-vim.keymap.set("n", "\\", function()
-  local picked_window_id = picker.pick_window({
-    include_current_win = true,
-  }) or vim.api.nvim_get_current_win()
-  vim.api.nvim_set_current_win(picked_window_id)
-end, { desc = "Pick a window" })
+-- vim.keymap.set("n", "\\", function()
+--   require("window-picker").pick_window({})
+-- end, { desc = "Pick a window" })
 
-local wk = require("which-key")
-wk.register({ ["<leader>cj"] = { name = "Code Split/Join" } })
+require("which-key").register({ ["<leader>cj"] = { name = "Code Split/Join" } })
 
 set_keymap(
   "n",
@@ -98,12 +93,7 @@ set_keymap(
   "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>",
   { desc = "Empty line above" }
 )
-set_keymap(
-  "n",
-  "]<space>",
-  "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>",
-  { desc = "Empty line below" }
-)
+set_keymap("n", "]<space>", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Empty line below" })
 
 set_keymap("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
 set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
