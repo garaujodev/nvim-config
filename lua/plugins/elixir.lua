@@ -17,17 +17,10 @@ return {
       })
     end,
   },
+  { "jfpedroza/neotest-elixir" },
   {
     "nvim-neotest/neotest",
-    optional = true,
-    dependencies = {
-      "jfpedroza/neotest-elixir",
-    },
-    opts = {
-      adapters = {
-        ["neotest-elixir"] = {},
-      },
-    },
+    opts = { adapters = { "neotest-elixir" } },
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
