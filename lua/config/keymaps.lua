@@ -16,8 +16,8 @@ end
 set_keymap("n", "<C-j>", "5j", { desc = "Jump down" })
 set_keymap("n", "<C-k>", "5k", { desc = "Jump up" })
 
-set_keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
-set_keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+set_keymap("n", "<Tab>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
+set_keymap("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { desc = "Previous buffer" })
 
 -- tabs
 set_keymap("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New tab" })
@@ -27,12 +27,12 @@ set_keymap("n", "<leader><tab><tab>", "<cmd>tablast<cr>", { desc = "Last tab" })
 -- commands
 set_keymap("n", ";", ":", { desc = "Fast command" })
 
-set_keymap("n", "<C-O>", ":Neotree <C-r>=expand('%:p:h')<CR>/", { desc = "Open command in current path" })
+set_keymap("n", "<C-O>", ":Neotree <C-r>=expand('%:p:h')<cr>/", { desc = "Open command in current path" })
 
-set_keymap("c", "<C-e>", "<C-r>=expand('%:p:h')<CR>/", { desc = "Fill current dir" })
+set_keymap("c", "<C-e>", "<C-r>=expand('%:p:h')<cr>/", { desc = "Fill current dir" })
 
 -- replace
-set_keymap("n", "<leader>:", ":%s/:(w+)(s*=>s*)/\1: /gc<CR>", { desc = "Replace old Ruby hash syntax to new one" })
+set_keymap("n", "<leader>:", ":%s/:(w+)(s*=>s*)/\1: /gc<cr>", { desc = "Replace old Ruby hash syntax to new one" })
 
 -- Disable arrow keys in normal mode
 -- multiple_set_keymap("n,i", "<Left>", "<Nop>", { noremap = true, silent = true })
@@ -58,22 +58,22 @@ end
 -- set_keymap("n", "<Leader>z", ":lua vim.toggle_maximize_window()<CR>", { desc = "Toggle maximize window" })
 
 -- Call Telescope file finder directly with <Ctrl+p> in normal and insert modes
-multiple_set_keymap("n,i", "<C-p>", "<Cmd>Telescope find_files<CR>", {
+multiple_set_keymap("n,i", "<C-p>", "<cmd>Telescope find_files<cr>", {
   noremap = true, -- Do not remap nested mappings
   silent = true, -- Do not show the mapping in command-line area
   desc = "Find files", -- Description for the key mapping
 })
 
-set_keymap("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>", { desc = "Buffer 1" })
-set_keymap("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<cr>", { desc = "Buffer 2" })
-set_keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<cr>", { desc = "Buffer 3" })
-set_keymap("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>", { desc = "Buffer 4" })
-set_keymap("n", "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Buffer 5" })
-set_keymap("n", "<leader>6", "<cmd>BufferLineGoToBuffer 6<cr>", { desc = "Buffer 6" })
-set_keymap("n", "<leader>7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
-set_keymap("n", "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
-set_keymap("n", "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
-set_keymap("n", "<leader>0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
+-- set_keymap("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>", { desc = "Buffer 1" })
+-- set_keymap("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<cr>", { desc = "Buffer 2" })
+-- set_keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<cr>", { desc = "Buffer 3" })
+-- set_keymap("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>", { desc = "Buffer 4" })
+-- set_keymap("n", "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Buffer 5" })
+-- set_keymap("n", "<leader>6", "<cmd>BufferLineGoToBuffer 6<cr>", { desc = "Buffer 6" })
+-- set_keymap("n", "<leader>7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
+-- set_keymap("n", "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
+-- set_keymap("n", "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
+-- set_keymap("n", "<leader>0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
 -- set_keymap("n", "<leader>l", "<cmd>e#<cr>", { desc = "Last Buffer" })
 
 set_keymap("n", "<leader>wo", "<cmd>only<cr>", { desc = "Focus window" })
@@ -90,10 +90,10 @@ require("which-key").register({ ["<leader>cj"] = { name = "Code Split/Join" } })
 set_keymap(
   "n",
   "[<space>",
-  "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>",
+  "<cmd>call append(line('.') - 1, repeat([''], v:count1))<cr>",
   { desc = "Empty line above" }
 )
-set_keymap("n", "]<space>", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Empty line below" })
+set_keymap("n", "]<space>", "<cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Empty line below" })
 
 set_keymap("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
 set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
