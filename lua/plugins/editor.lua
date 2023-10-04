@@ -157,4 +157,30 @@ return {
       }
     end,
   },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.completion.spell,
+          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.diagnostics.erb_lint,
+          null_ls.builtins.diagnostics.credo,
+          -- null_ls.builtins.diagnostics.rubocop, -- disabled due to I use Rubocop from Mason
+        },
+      })
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "elixir-ls",
+        "rubocop",
+      })
+    end,
+  },
 }
