@@ -12,6 +12,13 @@ local function multiple_set_keymap(modes, lhs, rhs, opts)
   end
 end
 
+function CopyRelativePath()
+  local file_path = vim.fn.expand("%")
+  local line_num = vim.fn.line(".")
+  local path_with_line = file_path .. ":" .. line_num
+  vim.fn.setreg("+", path_with_line)
+end
+
 -- navigation
 set_keymap("n", "<C-j>", "5j", { desc = "Jump down" })
 set_keymap("n", "<C-k>", "5k", { desc = "Jump up" })
@@ -30,6 +37,8 @@ set_keymap("n", ";", ":", { desc = "Fast command" })
 set_keymap("n", "<C-O>", ":Neotree <C-r>=expand('%:p:h')<cr>/", { desc = "Open command in current path" })
 
 set_keymap("c", "<C-e>", "<C-r>=expand('%:p:h')<cr>/", { desc = "Fill current dir" })
+
+set_keymap("n", "<leader>C", ":lua CopyRelativePath()<cr>", { desc = "Copy relative path" })
 
 -- replace
 set_keymap("n", "<leader>:", ":%s/:(w+)(s*=>s*)/\1: /gc<cr>", { desc = "Replace old Ruby hash syntax to new one" })
@@ -70,7 +79,7 @@ multiple_set_keymap("n,i", "<C-p>", "<cmd>Telescope find_files<cr>", {
 -- set_keymap("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>", { desc = "Buffer 4" })
 -- set_keymap("n", "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Buffer 5" })
 -- set_keymap("n", "<leader>6", "<cmd>BufferLineGoToBuffer 6<cr>", { desc = "Buffer 6" })
--- set_keymap("n", "<leader>7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "Buffer 7" })
+-- set_keymap("n", "<leader>7", "<cmd>BufferLineGoToBuffer/ 7<cr>", { desc = "Buffer 7" })
 -- set_keymap("n", "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", { desc = "Buffer 8" })
 -- set_keymap("n", "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", { desc = "Buffer 9" })
 -- set_keymap("n", "<leader>0", "<cmd>BufferLineGoToBuffer 0<cr>", { desc = "Buffer 0" })
@@ -85,6 +94,8 @@ set_keymap("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New buffer" })
 --   require("window-picker").pick_window({})
 -- end, { desc = "Pick a window" })
 
+set_keymap("n", "\\", "<C-W>w", { desc = "Pick a window" })
+
 require("which-key").register({ ["<leader>cj"] = { name = "Code Split/Join" } })
 
 set_keymap(
@@ -95,6 +106,6 @@ set_keymap(
 )
 set_keymap("n", "]<space>", "<cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Empty line below" })
 
-set_keymap("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
+set_keymap("n", "<leader>fg", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
 set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files, incl hidden (root dir)" })
-set_keymap("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find Git Files (root dir)" })
+set_keymap("n", "<leader><space>", "<cmd>Telescope git_files<cr>", { desc = "Find Git Files (root dir)" })
